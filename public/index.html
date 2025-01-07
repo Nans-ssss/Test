@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronisation des Lyrics avec Spotify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #lyrics-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px;
+            height: 300px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        .line {
+            margin: 5px 0;
+        }
+        .highlight {
+            color: #007BFF;
+            font-weight: bold;
+        }
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+        #controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Synchronisation des Lyrics avec Spotify</h1>
+
+    <!-- Bouton pour démarrer le processus d'authentification -->
+    <button id="login-btn">Se connecter à Spotify</button>
+
+    <div id="lyrics-container"></div>
+
+    <div id="controls">
+        <button id="playPauseBtn" disabled>Lecture</button>
+        <button id="nextBtn" disabled>Suivant</button>
+    </div>
+
+<!-- Script SDK Spotify -->
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+<!-- Ajouter cette ligne pour définir onSpotifyWebPlaybackSDKReady -->
+<script>
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        console.log('Spotify Web Playback SDK est prêt');
+        window.sdkLoaded = true;  // Indicateur que le SDK est chargé
+    };
+</script>
+
+<!-- Votre script d'authentification -->
+<script src="auth.js"></script>
+
+</body>
+</html>
